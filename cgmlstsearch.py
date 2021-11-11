@@ -166,7 +166,7 @@ if __name__=="__main__":
     if args.naive:
         #cProfile.run("search_seqs(seqs,s,args.distance)")
         if args.heuristic:
-            hits = search_heuristic(seqs,s,args.distance)
+            hits = search_seqs_heuristic(seqs,s,args.distance)
         else:
             hits = search_seqs(seqs,s,args.distance)
     elif args.trie:
