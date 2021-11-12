@@ -2,12 +2,14 @@
 
 import argparse
 import os.path
-import numpy as np
-import Trie
 import pickle
 from copy import copy
+from datetime import datetime
+
+import numpy as np
 from scipy.stats import binom
-import cProfile
+
+import Trie
 
 ## dtype
 dtype = np.uint8
@@ -152,6 +154,7 @@ def dist(seq,query):
 
 
 if __name__=="__main__":
+    start_time = datetime.now()
     args = readargs()
     if os.path.exists(args.seqs) and args.create_seqs == False:
         seqs = np.memmap(args.seqs,mode='r+',dtype=dtype,shape=(args.nseqs,args.schemalength))
@@ -176,6 +179,8 @@ if __name__=="__main__":
             hits = search_trie_heuristic(index,seqs,s,args.distance)
         else:
             hits = search_trie(index,seqs,s,args.distance)
+    processing_time = datetime.now() - start_time
+    print('Processing time:', processing_time)
     print('Hit count:', len(hits))
     print("Hits:")
     print(hits)
