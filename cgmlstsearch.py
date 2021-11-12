@@ -100,7 +100,7 @@ def search_seqs_heuristic(seqs,query,maxdist):
         b = binom(i,maxdist/len(query))
         softrange.append((i,b.ppf([0.0001]),b.ppf([0.9999])))
     hits=list()
-    for k,s in seqs:
+    for s in seqs:
         result = compare_heuristic(np.array(s),query,maxdist,softrange)
         if result is not None:
             hits.append(result)
