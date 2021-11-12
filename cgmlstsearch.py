@@ -117,13 +117,13 @@ def index_trie(seqs,indexpath):
 
 def search_trie_heuristic(index,seqs,query,maxdist):
     idx = index.search(query)
-    print(len(idx))
+    # print(len(idx))
     softrange = []
     alpha = 0.01
     for i in [10,100,1000,2000]:
         b = binom(i,maxdist/len(query))
         softrange.append((i,b.ppf([alpha]),b.ppf([1-alpha])))
-    print(softrange)
+    # print(softrange)
     
     hits=list()
     for i in idx:
@@ -176,5 +176,7 @@ if __name__=="__main__":
             hits = search_trie_heuristic(index,seqs,s,args.distance)
         else:
             hits = search_trie(index,seqs,s,args.distance)
-    print(len(hits))
+    print('Hit count:', len(hits))
+    print("Hits:")
+    print(hits)
 
