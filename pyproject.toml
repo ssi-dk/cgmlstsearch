@@ -7,7 +7,7 @@ authors = ["Finn Gruwier Larsen <finn@gruwier.dk>"]
 [tool.poetry.dependencies]
 python = "^3.8,<3.11"
 numpy = "^1.21.4"
-scipy = "^1.7.2"
+scipy = "^1.10.0"
 
 [tool.poetry.dev-dependencies]
 
